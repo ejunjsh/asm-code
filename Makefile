@@ -1,6 +1,7 @@
-build_hello:
-	rm -rf bin/
-	mkdir bin
+.PHONY: hello
+
+hello:
+	mkdir -p bin
 	nasm -f elf64 -o bin/hello.o hello/hello.asm
 	ld -o bin/hello bin/hello.o
 
