@@ -1,5 +1,7 @@
 .PHONY: hello sum
 
+all: hello sum
+
 hello:
 	mkdir -p bin
 	nasm -f elf64 -o bin/hello.o hello/hello.asm
