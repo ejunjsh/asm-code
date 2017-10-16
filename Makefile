@@ -1,6 +1,6 @@
-.PHONY: hello sum
+.PHONY: hello sum stack
 
-all: hello sum
+all: hello sum stack
 
 hello:
 	mkdir -p bin
@@ -11,6 +11,11 @@ sum:
 	mkdir -p bin
 	nasm -f elf64 -o bin/sum.o sum/sum.asm
 	ld -o bin/sum bin/sum.o
+
+stack:
+	mkdir -p bin
+	nasm -f elf64 -o bin/stack.o stack/stack.asm
+	ld -o bin/stack bin/stack.o
 
 clean:
 	rm -rf bin/
