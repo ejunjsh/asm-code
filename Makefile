@@ -1,6 +1,6 @@
-.PHONY: hello sum stack reverse
+.PHONY: hello sum stack reverse macro
 
-all: hello sum stack reverse
+all: hello sum stack reverse macro
 
 hello:
 	mkdir -p bin
@@ -21,6 +21,11 @@ reverse:
 	mkdir -p bin
 	nasm -f elf64 -o bin/reverse.o reverse/reverse.asm
 	ld -o bin/reverse bin/reverse.o
+
+macro:
+	mkdir -p bin
+	nasm -f elf64 -o bin/macro.o macro/macro.asm
+	ld -o bin/macro bin/macro.o
 
 clean:
 	rm -rf bin/
