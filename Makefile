@@ -1,9 +1,14 @@
-.PHONY: hello sum stack reverse macro c-call-asm c-inline-asm asm-call-c
+.PHONY: hello sum stack reverse macro c-call-asm c-inline-asm asm-call-c float
 
-all: hello sum stack reverse macro c-call-asm c-inline-asm asm-call-c
+all: hello sum stack reverse macro c-call-asm c-inline-asm asm-call-c float
 
 mkdir:
 	mkdir -p bin
+
+float: mkdir
+	gcc  -g -c float/float.c -o bin/float_1.o
+	nasm -f elf64 float/float.asm -o bin/float.o
+	ld   -dynamic-linker /lib64/ld-linux-x86-64.so.2 -lc bin/float_1.o bin/float.o -o bin/float
 
 asm-call-c: mkdir
 	gcc  -c asm-call-c/asm-call-c.c -o bin/asm-call-c.o
